@@ -14,6 +14,10 @@
 		1B013E7127B5A8210072EA74 /* VIPToDoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B013E6F27B5A8210072EA74 /* VIPToDoApp.xcdatamodeld */; };
 		1B013E7327B5A8240072EA74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B013E7227B5A8240072EA74 /* Assets.xcassets */; };
 		1B013E7627B5A8240072EA74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B013E7427B5A8240072EA74 /* LaunchScreen.storyboard */; };
+		1B013E8027B5C16D0072EA74 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B013E7F27B5C16D0072EA74 /* CoreDataManager.swift */; };
+		1B013E8327B5C7440072EA74 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B013E8227B5C7440072EA74 /* Task.swift */; };
+		1B013E8627B5D7480072EA74 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B013E8527B5D7480072EA74 /* DataStore.swift */; };
+		1B013E8927B5D7700072EA74 /* DataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B013E8827B5D7700072EA74 /* DataWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		1B013E7227B5A8240072EA74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B013E7527B5A8240072EA74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B013E7727B5A8240072EA74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B013E7F27B5C16D0072EA74 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1B013E8227B5C7440072EA74 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		1B013E8527B5D7480072EA74 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		1B013E8827B5D7700072EA74 /* DataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +66,60 @@
 		1B013E6527B5A8210072EA74 /* VIPToDoApp */ = {
 			isa = PBXGroup;
 			children = (
-				1B013E6627B5A8210072EA74 /* AppDelegate.swift */,
-				1B013E6827B5A8210072EA74 /* SceneDelegate.swift */,
+				1B013E7E27B5C1560072EA74 /* CoreData */,
+				1B013E8427B5D7350072EA74 /* Service */,
+				1B013E8727B5D75D0072EA74 /* Workers */,
+				1B013E8127B5C72D0072EA74 /* Models */,
+				1B013E7D27B5C1350072EA74 /* Resources */,
 				1B013E6A27B5A8210072EA74 /* ViewController.swift */,
 				1B013E6C27B5A8210072EA74 /* Main.storyboard */,
 				1B013E7227B5A8240072EA74 /* Assets.xcassets */,
 				1B013E7427B5A8240072EA74 /* LaunchScreen.storyboard */,
 				1B013E7727B5A8240072EA74 /* Info.plist */,
-				1B013E6F27B5A8210072EA74 /* VIPToDoApp.xcdatamodeld */,
 			);
 			path = VIPToDoApp;
+			sourceTree = "<group>";
+		};
+		1B013E7D27B5C1350072EA74 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1B013E6627B5A8210072EA74 /* AppDelegate.swift */,
+				1B013E6827B5A8210072EA74 /* SceneDelegate.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1B013E7E27B5C1560072EA74 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1B013E6F27B5A8210072EA74 /* VIPToDoApp.xcdatamodeld */,
+				1B013E7F27B5C16D0072EA74 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		1B013E8127B5C72D0072EA74 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1B013E8227B5C7440072EA74 /* Task.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		1B013E8427B5D7350072EA74 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1B013E8527B5D7480072EA74 /* DataStore.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1B013E8727B5D75D0072EA74 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				1B013E8827B5D7700072EA74 /* DataWorker.swift */,
+			);
+			name = Workers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +193,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B013E8627B5D7480072EA74 /* DataStore.swift in Sources */,
 				1B013E6B27B5A8210072EA74 /* ViewController.swift in Sources */,
 				1B013E7127B5A8210072EA74 /* VIPToDoApp.xcdatamodeld in Sources */,
 				1B013E6727B5A8210072EA74 /* AppDelegate.swift in Sources */,
+				1B013E8027B5C16D0072EA74 /* CoreDataManager.swift in Sources */,
+				1B013E8327B5C7440072EA74 /* Task.swift in Sources */,
 				1B013E6927B5A8210072EA74 /* SceneDelegate.swift in Sources */,
+				1B013E8927B5D7700072EA74 /* DataWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
