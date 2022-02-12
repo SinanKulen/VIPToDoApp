@@ -73,17 +73,27 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="c4q-9c-hwb"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cT-p9-EKe">
+                                <rect key="frame" x="358" y="87" width="47" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="line.3.horizontal" catalog="system"/>
+                                <connections>
+                                    <action selector="sortButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UTM-Am-Eza"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cGI-Co-u0r" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="EmX-bJ-J9w"/>
                             <constraint firstItem="VHN-kt-sa9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="120" id="En7-GS-dvt"/>
+                            <constraint firstItem="1cT-p9-EKe" firstAttribute="leading" secondItem="VHN-kt-sa9" secondAttribute="trailing" constant="1" id="Hp1-lT-rGq"/>
                             <constraint firstItem="XVM-tY-khZ" firstAttribute="width" secondItem="cGI-Co-u0r" secondAttribute="width" multiplier="0.603865" id="N6F-uK-lBQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cGI-Co-u0r" secondAttribute="bottom" id="PEm-2s-Gmu"/>
                             <constraint firstItem="cGI-Co-u0r" firstAttribute="leading" secondItem="XVM-tY-khZ" secondAttribute="trailing" constant="-271" id="Wdk-Nb-ts1"/>
                             <constraint firstItem="cGI-Co-u0r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b8j-zo-E82"/>
                             <constraint firstItem="cGI-Co-u0r" firstAttribute="top" secondItem="VHN-kt-sa9" secondAttribute="bottom" constant="10" id="izE-lV-uYK"/>
+                            <constraint firstItem="1cT-p9-EKe" firstAttribute="baseline" secondItem="VHN-kt-sa9" secondAttribute="baseline" id="oEm-Wb-bBc"/>
                             <constraint firstItem="cGI-Co-u0r" firstAttribute="top" secondItem="XVM-tY-khZ" secondAttribute="bottom" constant="4" id="oQo-29-gKk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cGI-Co-u0r" secondAttribute="trailing" id="wao-bn-mwi"/>
                         </constraints>
@@ -278,6 +288,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

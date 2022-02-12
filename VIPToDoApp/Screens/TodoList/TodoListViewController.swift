@@ -97,6 +97,20 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    var isSorted = false
+    
+    @IBAction func sortButton(_ sender: UIButton) {
+        if sender.isSelected == true
+        {
+            isSorted = true
+        }
+        else if sender.isSelected == false
+        {
+            isSorted = false
+        }
+    }
+    
+    
     @IBOutlet var tableView: UITableView!
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -116,7 +130,9 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         if isSearching
         {
             cell.lblTitle.text = filteredData[indexPath.row]
-        } else {
+        }
+        else
+        {
             let displayTask = displayedTasks[indexPath.row]
             cell.bindData(title: displayTask.title)
         }

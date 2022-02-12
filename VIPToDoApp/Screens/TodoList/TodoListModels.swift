@@ -25,6 +25,7 @@ enum TaskList
             
             struct DisplayedTask
             {
+                
                 var id : Int
                 var title : String
             }
