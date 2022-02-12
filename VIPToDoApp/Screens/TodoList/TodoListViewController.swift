@@ -15,7 +15,7 @@ protocol TodoListDisplayLogic : NSObject
 class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TodoListDisplayLogic {
 
     var interactor : TodoListBusinessLogic?
-    var router : (NSObjectProtocol & TodoListRoutingLogic & TodoListDataPassing)?
+    var router : (TodoListRoutingLogic & TodoListDataPassing)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -42,16 +42,9 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if let scene = segue.identifier
-        {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector)
-            {
-                router.perform(selector, with: segue)
-            }
-        }
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        router?.routeCreateTodo()
     }
     
     override func viewDidLoad() {
@@ -93,5 +86,9 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         let displayedTask = displayedTasks[indexPath.row]
         cell.bindData(title: displayedTask.title)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        router?.routeDetailTodo(index: indexPath.row)
     }
 }

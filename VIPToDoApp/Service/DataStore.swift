@@ -32,7 +32,6 @@ class DataStore : DataStoreProtocol
         completionHandler
         {
             return task
-            
         }
     }
 

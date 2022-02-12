@@ -52,15 +52,15 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHN-kt-sa9">
-                                <rect key="frame" x="301.5" y="87" width="51" height="31"/>
+                                <rect key="frame" x="297" y="87" width="60" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="8bw-qs-jni"/>
-                                    <constraint firstAttribute="width" constant="51" id="Jbo-Kj-CMi"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Gfb-5D-Ouv"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Ekle"/>
                                 <connections>
-                                    <segue destination="lHt-nn-WS7" kind="show" identifier="routeToCreateTodo" id="FAB-ft-AFO"/>
+                                    <action selector="addButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qqb-bi-eJO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -78,6 +78,8 @@
                     <navigationItem key="navigationItem" id="N3n-2q-n5T"/>
                     <connections>
                         <outlet property="tableView" destination="cGI-Co-u0r" id="Wr5-e4-1xZ"/>
+                        <segue destination="b8O-5u-Xov" kind="show" id="XXH-yT-unt"/>
+                        <segue destination="lHt-nn-WS7" kind="show" id="qXw-JX-DSI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -182,6 +184,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3X-FZ-5NQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1798.5507246376812" y="81.696428571428569"/>
+        </scene>
+        <!--Todo Detail View Controller-->
+        <scene sceneID="C0p-4x-RZD">
+            <objects>
+                <viewController storyboardIdentifier="TodoDetailViewController" id="b8O-5u-Xov" customClass="TodoDetailViewController" customModule="VIPToDoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GLJ-Ci-WA7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Detay" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nju-aP-4Tl">
+                                <rect key="frame" x="107" y="450" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RmM-8e-N6X"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="fik-ou-o8f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tarih" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Err-ef-jhV">
+                                <rect key="frame" x="107" y="600" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eJh-hI-zu1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Başlık" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U8r-tZ-eed">
+                                <rect key="frame" x="107" y="300" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="GxL-wd-HsM"/>
+                                    <constraint firstAttribute="height" constant="50" id="d7D-5u-nnx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UdP-du-Ewk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Err-ef-jhV" firstAttribute="trailing" secondItem="nju-aP-4Tl" secondAttribute="trailing" id="CZw-Bo-mjt"/>
+                            <constraint firstItem="nju-aP-4Tl" firstAttribute="top" secondItem="U8r-tZ-eed" secondAttribute="bottom" constant="100" id="JH5-CW-0V2"/>
+                            <constraint firstItem="U8r-tZ-eed" firstAttribute="trailing" secondItem="nju-aP-4Tl" secondAttribute="trailing" id="aO0-0h-Cge"/>
+                            <constraint firstItem="Err-ef-jhV" firstAttribute="leading" secondItem="nju-aP-4Tl" secondAttribute="leading" id="c5u-dQ-cfw"/>
+                            <constraint firstItem="nju-aP-4Tl" firstAttribute="centerX" secondItem="UdP-du-Ewk" secondAttribute="centerX" id="dDA-nN-Z2O"/>
+                            <constraint firstItem="U8r-tZ-eed" firstAttribute="leading" secondItem="nju-aP-4Tl" secondAttribute="leading" id="jT5-4h-tbF"/>
+                            <constraint firstItem="nju-aP-4Tl" firstAttribute="centerY" secondItem="UdP-du-Ewk" secondAttribute="centerY" id="oSM-qX-XFd"/>
+                            <constraint firstItem="Err-ef-jhV" firstAttribute="top" secondItem="nju-aP-4Tl" secondAttribute="bottom" constant="100" id="vVz-9Z-gGa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rtm-hn-AN1"/>
+                    <connections>
+                        <outlet property="tfDate" destination="Err-ef-jhV" id="ZBC-hf-iXO"/>
+                        <outlet property="tfDetail" destination="nju-aP-4Tl" id="rVJ-eX-IKx"/>
+                        <outlet property="tfTitle" destination="U8r-tZ-eed" id="TXT-AR-Fb4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSV-nO-BBZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1799" y="807"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="acM-h9-7Y7">

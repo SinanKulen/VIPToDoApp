@@ -60,7 +60,6 @@ class CreateTodoViewController: UIViewController, CreateTodoDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
-        // Do any additional setup after loading the view.
     }
     
     @IBOutlet var tfDate: UITextField!
@@ -96,7 +95,6 @@ class CreateTodoViewController: UIViewController, CreateTodoDisplayLogic {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         var dateStr : Date?
-        let tarih = tfDate.text
         if let dateString = tfDate.text
         {
             dateStr = dateFormatter.date(from: dateString)
@@ -104,7 +102,7 @@ class CreateTodoViewController: UIViewController, CreateTodoDisplayLogic {
         
    
         
-        if title != nil
+        if tfTitle.text != ""
         {
             let request = CreateTask.CreateTask.Request(taskField: CreateTask.TaskField(title: title!, detail: detail!, date: dateStr!))
             interactor?.createTask(request: request)

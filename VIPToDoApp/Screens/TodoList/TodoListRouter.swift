@@ -8,9 +8,10 @@
 import Foundation
 import UIKit
 
-@objc protocol TodoListRoutingLogic
+protocol TodoListRoutingLogic
 {
-    func routeToCreateTodo(segue: UIStoryboardSegue?)
+    func routeCreateTodo()
+    func routeDetailTodo(index: Int)
 }
 
 protocol TodoListDataPassing
@@ -18,24 +19,25 @@ protocol TodoListDataPassing
     var dataStore: TodoListDataStore? { get set }
 }
 
-class TodoListRouter: NSObject, TodoListDataPassing,TodoListRoutingLogic
+final class TodoListRouter: NSObject, TodoListDataPassing,TodoListRoutingLogic
 {
     weak var viewController : TodoListViewController?
     var dataStore: TodoListDataStore?
     
-    func routeToCreateTodo(segue: UIStoryboardSegue?)
+    
+    func routeCreateTodo()
     {
-        if segue == nil
-        {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let destinationVC = storyboard.instantiateViewController(withIdentifier: "CreateTodoViewController") as! CreateTodoViewController
-            navigateToCreateTodo(source: viewController!, destination: destinationVC)
-            
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "CreateTodoViewController") as! CreateTodoViewController
+        self.viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
-    func navigateToCreateTodo(source: TodoListViewController, destination: CreateTodoViewController)
+    func routeDetailTodo(index: Int)
     {
-        source.show(destination, sender: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "TodoDetailViewController") as! TodoDetailViewController
+        destinationVC.router?.dataStore?.task = dataStore!.tasks![index]
+        self.viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
+    
 }
