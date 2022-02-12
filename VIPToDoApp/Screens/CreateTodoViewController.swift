@@ -16,7 +16,7 @@ protocol CreateTodoDisplayLogic : NSObject
 class CreateTodoViewController: UIViewController, CreateTodoDisplayLogic {
 
     var interactor : CreateTodoBusinessLogic?
-    var router : (NSObjectProtocol & CreateTodoRoutingLogic & CreateTodoDataPassing)?
+    var router : (CreateTodoRoutingLogic & CreateTodoDataPassing)?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -45,17 +45,17 @@ class CreateTodoViewController: UIViewController, CreateTodoDisplayLogic {
     }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if let scene = segue.identifier
-        {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector)
-            {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+//    {
+//        if let scene = segue.identifier
+//        {
+//            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+//            if let router = router, router.responds(to: selector)
+//            {
+//                router.perform(selector, with: segue)
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +95,7 @@ class CreateTodoViewController: UIViewController, CreateTodoDisplayLogic {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         var dateStr : Date?
+
         if let dateString = tfDate.text
         {
             dateStr = dateFormatter.date(from: dateString)
@@ -121,7 +122,7 @@ class CreateTodoViewController: UIViewController, CreateTodoDisplayLogic {
         }
         
         if isSuccess {
-            router?.routeTodoList(segue: nil)
+            router?.routeTodoList()
         }
         else
         {

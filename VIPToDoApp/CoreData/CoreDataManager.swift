@@ -86,7 +86,7 @@ class CoreDataManager
                 {
                     if fetchResult.count != 0
                     {
-                        lastId = Int(fetchResult[fetchResult.count-1].id) //MARK: Anlamadım Mantığını
+                        lastId = Int(fetchResult[fetchResult.count-1].id)
                     } else
                     {
                         lastId = 0

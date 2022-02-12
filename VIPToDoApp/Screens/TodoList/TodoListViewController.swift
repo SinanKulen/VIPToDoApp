@@ -12,7 +12,7 @@ protocol TodoListDisplayLogic : NSObject
     func displayTaskList(viewModel: TaskList.FetchTasks.ViewModel)
 }
 
-class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TodoListDisplayLogic {
+class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TodoListDisplayLogic, UISearchBarDelegate {
 
     var interactor : TodoListBusinessLogic?
     var router : (TodoListRoutingLogic & TodoListDataPassing)?
@@ -50,6 +50,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTasks()
+        searchBar.enablesReturnKeyAutomatically = false
+        tableView.keyboardDismissMode = .onDrag
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,19 +74,52 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         displayedTasks = viewModel.displayedTasks
     }
     
+    @IBOutlet var searchBar: UISearchBar!
+    var filteredData = [String]()
+    var isSearching = false
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == ""
+        {
+            isSearching = false
+            tableView.reloadData()
+        }
+        else
+        {
+            isSearching = true
+            var displayArray = [String]()
+            for display in displayedTasks
+            {
+                displayArray.append(display.title)
+            }
+            filteredData = displayArray.filter({ $0.contains(searchBar.text ?? "")})
+            tableView.reloadData()
+        }
+    }
+    
     @IBOutlet var tableView: UITableView!
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayedTasks.count
+        if isSearching
+        {
+            return filteredData.count
+        } else {
+            return displayedTasks.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListTableViewCell", for: indexPath) as! TodoListTableViewCell
-        let displayedTask = displayedTasks[indexPath.row]
-        cell.bindData(title: displayedTask.title)
+        if isSearching
+        {
+            cell.lblTitle.text = filteredData[indexPath.row]
+        } else {
+            let displayTask = displayedTasks[indexPath.row]
+            cell.bindData(title: displayTask.title)
+        }
         return cell
     }
     

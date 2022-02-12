@@ -63,20 +63,34 @@
                                     <action selector="addButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qqb-bi-eJO"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XVM-tY-khZ">
+                                <rect key="frame" x="21" y="80" width="250" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="rZj-0c-76N"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="c4q-9c-hwb"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cGI-Co-u0r" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="EmX-bJ-J9w"/>
                             <constraint firstItem="VHN-kt-sa9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="120" id="En7-GS-dvt"/>
+                            <constraint firstItem="XVM-tY-khZ" firstAttribute="width" secondItem="cGI-Co-u0r" secondAttribute="width" multiplier="0.603865" id="N6F-uK-lBQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cGI-Co-u0r" secondAttribute="bottom" id="PEm-2s-Gmu"/>
+                            <constraint firstItem="cGI-Co-u0r" firstAttribute="leading" secondItem="XVM-tY-khZ" secondAttribute="trailing" constant="-271" id="Wdk-Nb-ts1"/>
                             <constraint firstItem="cGI-Co-u0r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b8j-zo-E82"/>
                             <constraint firstItem="cGI-Co-u0r" firstAttribute="top" secondItem="VHN-kt-sa9" secondAttribute="bottom" constant="10" id="izE-lV-uYK"/>
+                            <constraint firstItem="cGI-Co-u0r" firstAttribute="top" secondItem="XVM-tY-khZ" secondAttribute="bottom" constant="4" id="oQo-29-gKk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cGI-Co-u0r" secondAttribute="trailing" id="wao-bn-mwi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="N3n-2q-n5T"/>
                     <connections>
+                        <outlet property="searchBar" destination="XVM-tY-khZ" id="fTA-8g-slc"/>
                         <outlet property="tableView" destination="cGI-Co-u0r" id="Wr5-e4-1xZ"/>
                         <segue destination="b8O-5u-Xov" kind="show" id="XXH-yT-unt"/>
                         <segue destination="lHt-nn-WS7" kind="show" id="qXw-JX-DSI"/>
